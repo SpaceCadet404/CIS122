@@ -1,0 +1,36 @@
+# Program:      Lesson 2 
+# Programmer:   Douglas Rosenfield
+# Date:         01/16/19
+# Purpose:      This program is designed to total costs of grocery items for checkout.
+
+# create variables
+apple_item = "apple"
+apple_qty = 1
+apple_price = 0.60
+banana_item = "banana"
+banana_qty = 5
+banana_price = 1.5
+cabbage_item = "cabbage"
+cabbage_qty = 3
+cabbage_price = 2.0
+
+apple_total = (apple_qty * apple_price)
+banana_total = (banana_qty * banana_price)
+cabbage_total = (cabbage_qty * cabbage_price)
+
+order_total = (apple_total + banana_total + cabbage_total)
+
+#output
+
+print("Order for Douglas")
+print("Item Name     Price     Qty     Total")
+print("1. " + str(apple_item) + " " + str(apple_price) + " " + str(apple_qty) + " " + str(apple_total))
+print("2. " + str(banana_item) + " " + str(banana_price) + " " + str(banana_qty) + " " + str(banana_total))
+print("3. " + str(cabbage_item) + " " + str(cabbage_price) + " " + str(cabbage_qty) + " " + str(cabbage_total))
+print("Order Total: $" + str(order_total))
+
+
+
+
+
+
