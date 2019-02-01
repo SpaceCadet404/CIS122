@@ -1,4 +1,4 @@
-# Program:      Lesson 4
+# Program:      Lesson 4 Grocer Application
 # Programmer:   Douglas Rosenfield
 # Date:         02/01/19
 # Purpose:      This program is designed to total costs of grocery items for checkout, now using do while loops to do so.
