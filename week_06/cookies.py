@@ -1,7 +1,7 @@
-# Program:      Lesson 5 Girl Scout Cookies Order Form
+# Program:      Lesson 6 Girl Scout Cookies Order Form
 # Programmer:   Douglas Rosenfield
-# Date:         02/04/2019
-# Purpose:      To create an order form demonstrating use of "IF" statements
+# Date:         02/15/2019
+# Purpose:      To create an order form using try to validate data in user inputs
 
 #variables
 import locale
@@ -42,14 +42,17 @@ while cont.lower() == "y":
             print ("\nThat was not a valid choice, please try again.")
 
     valid_data = False      #reset bool flag
-
     while not valid_data:
-        qty = int(input("enter quantity> "))
-
-        if 1 <= qty <= 10:
-            valid_data = True
-        else:
-            print("\nThat was not a valid quantity, please input an amount betweeen 1 and 10.\n")
+        try:
+            while not valid_data:
+                qty = int(input("enter quantity> "))
+                if 1 <= qty <= 10:
+                    valid_data = True
+                else:
+                    print("Please enter a number between 1 and 10")
+        except Exception as detail:
+            print("quantity error: ", detail)
+            print("Are you sure you entered a number?")
 
     # determine totals
     item_total = qty * price
