@@ -10,21 +10,25 @@ print ("welcome to my calorie counter program")
 cont = ""           # sentinel
 item_cnt = int(0)   # item count
 tot_cals = int(0)   # total calories
+item_list = []      # list of items
+cals_list = []      # list of calories for items
 
 # functions
 # displays user options
 def disp_menu():
     valid_data = False
-    options = "a d q".split()
+    options = "a d m q".split()
     while not valid_data:
         print("\nPlease select an option.\n")
         print("a - add")
         print("d - delete")
+        print("m - show meal")
         print("q - quit")
 
-        seletion = input("> ")
+        selection = input("> ")
         if selection in options:
             valid_data = True
+            return selection
         else:
             print("That was not a valid option. Please try again.")
 
@@ -44,6 +48,7 @@ def input_name():
         elif len(item_name) == 0:
             print("You must enter a name")
         else:
+            return item_name
             valid_data = True
 
 def input_grams(element):
@@ -83,6 +88,48 @@ def add_process(tot_cals, item_cnt):
 
     return tot_cals, item_cnt
 
+# Displays meal so far
+def disp_meal():
+    print("\nMeal Calorie Counter")
+    print("Num\tItem\t\tCals")
+    print("---\t----\t\t----")
+    meal_cals = 0 #accumulator for meal cals
+
+    for c in range(len(item_list)):
+        meal_cals += cals_list[c]
+        print("{}.\t{}\t\t{}".format(c+1, item_list[c], cals_list[c]))
+
+    print("\nYour meal has {} items for a total of {} calories\n".format(len(item_list), meal_cals))
+    print("-" * 20)
+
+# Adds item to lists
+def add_item(name, cals):
+    item_list.append(name)
+    cals_list.append(cals)
+
+# Deletes item from lists
+def del_item():
+    if len(item_list) == 0:
+        print("you have no items in your menu to delete")
+    else:
+        print("\nDelete an item")
+        disp_meal()
+
+        valid_data = False
+        while not valid_data:
+            try:
+                choice = int(input("select an item to delete> ")) - 1
+                if 1 <= choice+1 <= len(item_list):
+                    print("Item {}. {} with {} calories will be deleted".format(choice + 1, item_list[choice], cals_list[choice]))
+                    del item_list[choice]
+                    del cals_list[choice]
+                    valid_data = True
+                else:
+                    print("That was not a valid selection.")
+
+            except Exception as detail:
+                print("error: ", detail)
+                print("please try again")
 
 while True:
     choice = disp_menu()
@@ -90,6 +137,7 @@ while True:
         tot_cals, item_cnt = add_process(tot_cals, item_cnt)
     elif choice == "d":
         del_item()
+    elif choice == "m":
+        disp_meal()
     elif choice == "q":
         break
-    disp_meal()
