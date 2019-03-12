@@ -1,0 +1,15 @@
+VALID -- abc@xyz.com
+VALID -- abc@x.yz
+VALID -- abc@xyz.c
+VOID -- a@b.c
+VALID -- abc@xyz..com
+VALID -- abc.@xyz.com
+VALID -- abc@.xyz.com
+VOID -- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@aaaaaa.aaaaa
+VALID -- abc@xyz.$%
+VALID -- abc@xyz.()
+VALID -- abc'@xyz.com
+VALID -- aaaaa@aaaaa
+VALID -- abc @ xyz.com
+VOID -- .abc@xyz.com
+VALID -- abc@xyz.c
